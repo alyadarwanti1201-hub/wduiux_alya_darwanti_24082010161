@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alya Darwanti Armunanto (Ale) | Portfolio</title>
+    
+    <!-- Bootstrap 5.3 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        creamBg: '#FAFAF7',
+                        cardWhite: '#FFFFFF',
+                        borderSoft: '#F1E8EC',
+                        pastelPink: '#FCE7F0',
+                        pastelPeach: '#FFEBD9',
+                        pastelLavender: '#ECE7FF',
+                        pastelMint: '#E2F7F2',
+                        brandPrimary: '#D9658B',
+                        brandSecondary: '#8B65D9',
+                        textDark: '#2B2338',
+                        textMuted: '#6E647D'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAFAF7;
+            color: #2B2338;
+            overflow-x: hidden;
+        }
+
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Glassmorphism & Soft Card Styles */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(241, 232, 236, 0.9);
+            box-shadow: 0 10px 30px -10px rgba(217, 101, 139, 0.08);
+        }
+
+        .glass-nav {
+            background: rgba(250, 250, 247, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(241, 232, 236, 0.8);
+        }
+
+        /* Gradient & Soft Glows */
+        .text-gradient {
+            background: linear-gradient(135deg, #D9658B 0%, #8B65D9 50%, #E87A5D 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            A-webkit-text-fill-color: transparent;
+}
+        .bg-gradient-brand {
+            background: linear-gradient(135deg, #E583A5 0%, #A483E5 100%);
+        }
+
+        .btn-pastel {
+            background: linear-gradient(135deg, #E583A5 0%, #A483E5 100%);
+            color: #ffffff;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 20px -6px rgba(217, 101, 139, 0.35);
+        }
+        .btn-pastel:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px -4px rgba(217, 101, 139, 0.45);
+            color: #ffffff;
+        }
+
+        .hover-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(217, 101, 139, 0.3);
+            box-shadow: 0 16px 32px -8px rgba(139, 101, 217, 0.15);
+        }
+
+        /* Soft Animated Ambient Blobs */
+        .blob {
+            position: absolute;
+            filter: blur(70px);
+            opacity: 0.55;
+            z-index: 0;
+            animation: float 10s infinite alternate ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translate(0px, 0px) scale(1); }
+            100% { transform: translate(30px, -30px) scale(1.08); }
+        }
+
+        /* Timeline Styling */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 2px;
+            background: linear-gradient(to bottom, #E583A5, #A483E5);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAFAF7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E583A5;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D9658B;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen">
+
+    <div class="blob w-[28rem] h-[28rem] bg-pink-200 top-[-50px] left-[-80px] rounded-full"></div>
+    <div class="blob w-[26rem] h-[26rem] bg-purple-200 top-[28%] right-[-60px] rounded-full"></div>
+    <div class="blob w-[28rem] h-[28rem] bg-amber-100 bottom-[10%] left-[15%] rounded-full"></div>
+
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="text-2xl font-extrabold flex items-center gap-2">
+                    <span class="w-10 h-10 rounded-2xl bg-gradient-brand flex items-center justify-center text-white text-base shadow-md">
+                        <i class="fa-solid fa-sparkles"></i>
+                    </span>
+                    <span class="tracking-tight text-textDark">Ale<span class="text-gradient">.studio</span></span>
+                </a>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#about" class="text-textMuted hover:text-brandPrimary font-medium transition-colors">About</a>
+                    <a href="#skills" class="text-textMuted hover:text-brandPrimary font-medium transition-colors">Skills</a>
+                    <a href="#projects" class="text-textMuted hover:text-brandPrimary font-medium transition-colors">Projects</a>
+                    <a href="#petcare" class="text-textMuted hover:text-brandPrimary font-medium transition-colors"><i class="fa-solid fa-cat text-pink-400 me-1"></i>Pet Care</a>
+                    <a href="#experience" class="text-textMuted hover:text-brandPrimary font-medium transition-colors">Experience</a>
+                    <a href="#contact" class="text-textMuted hover:text-brandPrimary font-medium transition-colors">Contact</a>
+                    <a href="#contact" class="btn-pastel px-5 py-2.5 rounded-full text-sm font-semibold">
+                        Let's Talk <i class="fa-regular fa-paper-plane ms-1"></i>
+                    </a>
+                </div>
+
+                <button id="mobileMenuBtn" class="md:hidden text-textDark hover:text-brandPrimary text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden glass-card border-t border-pink-100 px-6 pt-4 pb-6 space-y-3">
+            <a href="#about" class="block py-2 text-textMuted hover:text-brandPrimary font-medium">About</a>
+            <a href="#skills" class="block py-2 text-textMuted hover:text-brandPrimary font-medium">Skills</a>
+            <a href="#projects" class="block py-2 text-textMuted hover:text-brandPrimary font-medium">Projects</a>
+            <a href="#petcare" class="block py-2 text-textMuted hover:text-brandPrimary font-medium">Pet Care & Cats</a>
+            <a href="#experience" class="block py-2 text-textMuted hover:text-brandPrimary font-medium">Experience</a>
+            <a href="#contact" class="block py-2 text-textMuted hover:text-brandPrimary font-medium">Contact</a>
+            <a href="#contact" class="block text-center btn-pastel py-2.5 rounded-full text-sm font-semibold mt-2">
+                Let's Talk
+            </a>
+        </div>
+    </nav>
+
+    <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-100/80 border border-pink-200 text-brandPrimary text-xs font-semibold tracking-wide">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        Mahasiswa Sistem Informasi UPN Veteran Jatim
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-textDark tracking-tight leading-tight">
+                        Crafting Clean & Aesthetic <br class="hidden sm:inline">
+                        <span class="text-gradient">Digital Experiences</span> 
+                    </h1>
+
+                    <p class="text-lg text-textMuted font-semibold h-10">
+                        I am a <span id="typedText" class="text-brandPrimary border-b-2 border-brandPrimary"></span>
+                    </p>
+
+                    <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Hello! I'm <strong class="text-textDark">Alya Darwanti Armunanto (Ale)</strong>. I design human-centered interfaces and build robust mobile & web applications with a clean, pleasant visual balance.
+                    </p>
+
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#projects" class="btn-pastel font-semibold px-8 py-3.5 rounded-full flex items-center gap-2">
+                            Explore Projects <i class="fa-solid fa-arrow-down-long"></i>
+                        </a>
+                        <a href="#contact" class="glass-card text-textDark hover:text-brandPrimary font-semibold px-7 py-3.5 rounded-full border border-pink-200 hover:border-pink-300 transition-all flex items-center gap-2">
+                            Get In Touch <i class="fa-regular fa-paper-plane"></i>
+                        </a>
+                        <button onclick="downloadCV()" class="glass-card text-purple-700 hover:text-purple-800 font-semibold px-6 py-3.5 rounded-full border border-purple-200 hover:bg-purple-50 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-file-arrow-down"></i> Download CV
+                        </button>
+                    </div>
+
+                    <div class="pt-6 flex items-center justify-center lg:justify-start gap-6 text-textMuted text-xl">
+                        <a href="https://github.com" target="_blank" class="hover:text-brandPrimary transition-colors"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="hover:text-brandSecondary transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="hover:text-pink-500 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="mailto:alyadarwanti@gmail.com" class="hover:text-brandPrimary transition-colors"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+
+    <section class="py-10 bg-white/60 border-y border-pink-100/80 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-5 glass-card rounded-2xl hover-card">
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-brandPrimary counter" data-target="15">0</h3>
+                    <p class="text-xs sm:text-sm text-textMuted mt-1 font-semibold">Projects Completed</p>
+                </div>
+                <div class="p-5 glass-card rounded-2xl hover-card">
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-brandSecondary counter" data-target="3">0</h3>
+                    <p class="text-xs sm:text-sm text-textMuted mt-1 font-semibold">Years Coding & Designing</p>
+                </div>
+                <div class="p-5 glass-card rounded-2xl hover-card">
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-rose-500 counter" data-target="10">0</h3>
+                    <p class="text-xs sm:text-sm text-textMuted mt-1 font-semibold">Tech & Design Tools</p>
+                </div>
+                <div class="p-5 glass-card rounded-2xl hover-card">
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-emerald-500 counter" data-target="100">0</h3>
+                    <p class="text-xs sm:text-sm text-textMuted mt-1 font-semibold">% Care & Dedication</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brandPrimary uppercase tracking-widest mb-2">About Me</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-textDark">Blending Logic, Aesthetics & Empathy</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md">
+                        <div class="glass-card rounded-3xl p-8 text-center border border-pink-100 shadow-xl relative overflow-hidden">
+                            <div class="w-32 h-32 rounded-full mx-auto bg-gradient-to-tr from-pink-200 to-purple-200 p-1 mb-4 flex items-center justify-center shadow-inner">
+                                <div class="w-full h-full rounded-full bg-white flex items-center justify-center text-4xl text-brandPrimary">
+                                    <i class="fa-solid fa-user-ninja"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold text-textDark">Alya Darwanti Armunanto</h3>
+                            <p class="text-xs text-brandSecondary font-bold mt-1 mb-3">Sistem Informasi UPN Veteran Jawa Timur</p>
+                            <p class="text-textMuted text-sm leading-relaxed mb-4">
+                                Passionate about creating seamless user experiences and scalable software architectures
+                            </p>
+                            <div class="flex flex-wrap justify-center gap-2">
+                                <span class="text-xs bg-pink-100 text-brandPrimary font-semibold px-3 py-1 rounded-full">UI/UX</span>
+                                <span class="text-xs bg-purple-100 text-brandSecondary font-semibold px-3 py-1 rounded-full">Kotlin Native</span>
+                                <span class="text-xs bg-amber-100 text-amber-700 font-semibold px-3 py-1 rounded-full">Laravel</span>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+                    <div class="glass-card p-6 rounded-2xl hover-card">
+                        <div class="w-12 h-12 rounded-2xl bg-pink-100 text-brandPrimary flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-textDark mb-2">Mobile Apps (Kotlin)</h4>
+                        <p class="text-textMuted text-sm">Developing clean native Android applications with Kotlin, clean architecture, and responsive layouts.</p>
+                    </div>
+
+                    <div class="glass-panel glass-card p-6 rounded-2xl hover-card">
+                        <div class="w-12 h-12 rounded-2xl bg-purple-100 text-brandSecondary flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-textDark mb-2">UI/UX & Prototyping</h4>
+                        <p class="text-textMuted text-sm">Crafting wireframes, design systems, and interactive Figma prototypes with focus on usability.</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl hover-card">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-textDark mb-2">Web Engineering</h4>
+                        <p class="text-textMuted text-sm">Building dynamic web platforms using Laravel PHP, Tailwind CSS, Bootstrap, and database management.</p>
+                    </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24 bg-white/70 relative z-10 border-t border-pink-100/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brandSecondary uppercase tracking-widest mb-2">Tech Stack</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-textDark">Tools & Technologies I Utilize</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+                
+                <div class="glass-card p-5 rounded-2xl text-center hover-card group border border-pink-100">
+                    <div class="text-4xl text-purple-500 mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-android"></i>
+                    </div>
+                    <h5 class="font-bold text-textDark text-base">Kotlin</h5>
+                    <p class="text-xs text-textMuted mt-1">Android Native</p>
+                </div>
+
+                <div class="glass-card p-5 rounded-2xl text-center hover-card group border border-pink-100">
+                    <div class="text-4xl text-rose-500 mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-laravel"></i>
+                    </div>
+                    <h5 class="font-bold text-textDark text-base">Laravel</h5>
+                    <p class="text-xs text-textMuted mt-1">Backend Framework</p>
+                </div>
+
+                <div class="glass-card p-5 rounded-2xl text-center hover-card group border border-pink-100">
+                    <div class="text-4xl text-pink-500 mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-figma"></i>
+                    </div>
+                    <h5 class="font-bold text-textDark text-base">Figma</h5>
+                    <p class="text-xs text-textMuted mt-1">UI/UX Design</p>
+                </div>
+
+                <div class="glass-card p-5 rounded-2xl text-center hover-card group border border-pink-100">
+                    <div class="text-4xl text-blue-500 mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <h5 class="font-bold text-textDark text-base">MySQL</h5>
+                    <p class="text-xs text-textMuted mt-1">Relational DB</p>
+                </div>
+
+                <div class="glass-card p-5 rounded-2xl text-center hover-card group border border-pink-100">
+                    <div class="text-4xl text-teal-500 mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-css3-alt"></i>
+                    </div>
+                    <h5 class="font-bold text-textDark text-base">Tailwind</h5>
+                    <p class="text-xs text-textMuted mt-1">Modern UI</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-brandPrimary uppercase tracking-widest mb-2">Portfolio</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-textDark">Featured Projects & Case Studies</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="filter-btn active bg-brandPrimary text-white px-5 py-2 rounded-full text-xs font-bold transition-all shadow-sm" data-filter="all">All Projects</button>
+                <button class="filter-btn bg-white text-textMuted hover:text-brandPrimary px-5 py-2 rounded-full text-xs font-bold border border-pink-100 transition-all" data-filter="mobile">Mobile Apps</button>
+                <button class="filter-btn bg-white text-textMuted hover:text-brandPrimary px-5 py-2 rounded-full text-xs font-bold border border-pink-100 transition-all" data-filter="web">Web Apps</button>
+                <button class="filter-btn bg-white text-textMuted hover:text-brandPrimary px-5 py-2 rounded-full text-xs font-bold border border-pink-100 transition-all" data-filter="pet">Pet Care</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Project 1: Skilink -->
+                <div class="project-card glass-card rounded-3xl overflow-hidden hover-card border border-pink-100" data-category="web">
+                    <div class="h-48 bg-gradient-to-r from-pink-100 to-purple-100 p-6 flex items-center justify-between relative overflow-hidden">
+                        <div class="z-10">
+                            <span class="text-xs font-bold text-brandPrimary bg-white px-3 py-1 rounded-full shadow-sm">Web Application</span>
+                            <h3 class="text-2xl font-bold text-textDark mt-3">Skilink</h3>
+                            <p class="text-xs text-textMuted font-medium">Internship & Recruitment Platform</p>
+                        </div>
+                        <i class="fa-solid fa-briefcase text-8xl text-purple-200 absolute right-2 bottom-[-10px] opacity-60"></i>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-textMuted text-sm mb-4">
+                            Internship platform matching university students with companies, featuring applicant tracking, skill portfolios, and dashboard analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-pink-50 text-brandPrimary font-semibold px-2.5 py-1 rounded-lg">Laravel</span>
+                            <span class="text-xs bg-purple-50 text-brandSecondary font-semibold px-2.5 py-1 rounded-lg">Tailwind CSS</span>
+                            <span class="text-xs bg-amber-50 text-amber-700 font-semibold px-2.5 py-1 rounded-lg">MySQL</span>
+                        </div>
+                        <button onclick="openProjectModal('Skilink', 'Internship & Recruitment Platform', 'Built a recruitment web portal where students submit internship applications, track recruitment stages, and showcase portfolios. Corporate admin features integrated.', 'Laravel, Tailwind CSS, MySQL, JavaScript')" class="w-full text-center py-2.5 rounded-xl bg-pink-50 text-brandPrimary hover:bg-brandPrimary hover:text-white transition-colors text-xs font-bold">
+                            View Details <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2: UniLink -->
+                <div class="project-card glass-card rounded-3xl overflow-hidden hover-card border border-pink-100" data-category="mobile">
+                    <div class="h-48 bg-gradient-to-r from-purple-100 to-indigo-100 p-6 flex items-center justify-between relative overflow-hidden">
+                        <div class="z-10">
+                            <span class="text-xs font-bold text-brandSecondary bg-white px-3 py-1 rounded-full shadow-sm">Mobile App (Kotlin)</span>
+                            <h3 class="text-2xl font-bold text-textDark mt-3">UniLink</h3>
+                            <p class="text-xs text-textMuted font-medium">Campus Mentoring Network</p>
+                        </div>
+                        <i class="fa-solid fa-graduation-cap text-8xl text-indigo-200 absolute right-2 bottom-[-10px] opacity-60"></i>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-textMuted text-sm mb-4">
+                            Android networking app designed for college students to find peer mentors, form study groups, and collaborate on academic research.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-purple-50 text-brandSecondary font-semibold px-2.5 py-1 rounded-lg">Kotlin</span>
+                            <span class="text-xs bg-blue-50 text-blue-700 font-semibold px-2.5 py-1 rounded-lg">Android SDK</span>
+                            <span class="text-xs bg-emerald-50 text-emerald-700 font-semibold px-2.5 py-1 rounded-lg">Firebase</span>
+                        </div>
+                        <button onclick="openProjectModal('UniLink', 'Campus Mentoring & Collaboration Mobile App', 'Native Kotlin Android app offering user authentication, mentor matching based on major interests, and real-time forum discussions.', 'Kotlin, Android Studio, Firebase Auth & Realtime Database')" class="w-full text-center py-2.5 rounded-xl bg-purple-50 text-brandSecondary hover:bg-brandSecondary hover:text-white transition-colors text-xs font-bold">
+                            View Details <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3: Urbn Kopi POS -->
+                <div class="project-card glass-card rounded-3xl overflow-hidden hover-card border border-pink-100" data-category="web">
+                    <div class="h-48 bg-gradient-to-r from-amber-100 to-pink-100 p-6 flex items-center justify-between relative overflow-hidden">
+                        <div class="z-10">
+                            <span class="text-xs font-bold text-amber-700 bg-white px-3 py-1 rounded-full shadow-sm">Web & POS</span>
+                            <h3 class="text-2xl font-bold text-textDark mt-3">Urbn Kopi POS</h3>
+                            <p class="text-xs text-textMuted font-medium">Coffee Shop Management System</p>
+                        </div>
+                        <i class="fa-solid fa-mug-hot text-8xl text-amber-200 absolute right-2 bottom-[-10px] opacity-60"></i>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-textMuted text-sm mb-4">
+                            Point of Sale system for coffee shops with ingredient tracking, revenue charts, and transaction receipt generation.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-amber-50 text-amber-700 font-semibold px-2.5 py-1 rounded-lg">PHP</span>
+                            <span class="text-xs bg-pink-50 text-brandPrimary font-semibold px-2.5 py-1 rounded-lg">Bootstrap 5</span>
+                            <span class="text-xs bg-teal-50 text-teal-700 font-semibold px-2.5 py-1 rounded-lg">Chart.js</span>
+                        </div>
+                        <button onclick="openProjectModal('Urbn Kopi POS', 'Coffee Shop POS & Inventory App', 'Clean web-based cashier system providing order entry, daily profit summaries, low-stock warnings, and receipts.', 'PHP, Bootstrap 5, MySQL, Chart.js')" class="w-full text-center py-2.5 rounded-xl bg-amber-50 text-amber-700 hover:bg-amber-600 hover:text-white transition-colors text-xs font-bold">
+                            View Details <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 4: PawPals Pet Care Initiative -->
+                <div class="project-card glass-card rounded-3xl overflow-hidden hover-card border border-pink-100" data-category="pet">
+                    <div class="h-48 bg-gradient-to-r from-teal-100 to-emerald-100 p-6 flex items-center justify-between relative overflow-hidden">
+                        <div class="z-10">
+                            <span class="text-xs font-bold text-teal-700 bg-white px-3 py-1 rounded-full shadow-sm">Pet Care Initiative</span>
+                            <h3 class="text-2xl font-bold text-textDark mt-3">PawPals Care</h3>
+                            <p class="text-xs text-textMuted font-medium">Cat Rescue & Adoption Hub</p>
+                        </div>
+                        <i class="fa-solid fa-paw text-8xl text-teal-200 absolute right-2 bottom-[-10px] opacity-60"></i>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-textMuted text-sm mb-4">
+                            Community-driven adoption portal & medical reminder tracker for stray cats and pet owners in Surabaya.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-teal-50 text-teal-700 font-semibold px-2.5 py-1 rounded-lg">UI/UX Design</span>
+                            <span class="text-xs bg-purple-50 text-brandSecondary font-semibold px-2.5 py-1 rounded-lg">Kotlin Prototype</span>
+                            <span class="text-xs bg-pink-50 text-brandPrimary font-semibold px-2.5 py-1 rounded-lg">Figma</span>
+                        </div>
+                        <button onclick="openProjectModal('PawPals Care', 'Cat Adoption & Pet Welfare Platform', 'A passion project combining mobile UI/UX design with pet care routines, vaccination schedules, and shelter adoption connections.', 'Figma Prototype, Kotlin Mobile UI, User Experience Research')" class="w-full text-center py-2.5 rounded-xl bg-teal-50 text-teal-700 hover:bg-teal-600 hover:text-white transition-colors text-xs font-bold">
+                            View Details <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="petcare" class="py-20 bg-gradient-to-br from-pink-100/60 via-purple-50/50 to-amber-50/50 relative z-10 border-y border-pink-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 border border-pink-200 shadow-xl relative overflow-hidden">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-200/60 text-brandPrimary text-xs font-bold">
+                            <i class="fa-solid fa-heart"></i> Pet Welfare & Cat Lover
+                        </span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-textDark">
+                            Designing with Empathy: Inspired by Cats 🐾
+                        </h3>
+                        <p class="text-textMuted text-sm sm:text-base leading-relaxed">
+                            Beyond code and system architecture, I have a deep passion for pet care, cat rescue, and animal welfare initiatives. Caring for pets teaches me attention to detail, patience, and human-centered empathy—qualities that directly shape how I design software interfaces.
+                        </p>
+                        <div class="flex flex-wrap gap-4 pt-2">
+                            <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-2xl shadow-sm text-xs font-bold text-textDark">
+                                <i class="fa-solid fa-cat text-brandPrimary"></i> Stray Rescue Advocate
+                            </div>
+                            <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-2xl shadow-sm text-xs font-bold text-textDark">
+                                <i class="fa-solid fa-shield-cat text-brandSecondary"></i> Tech for Pet Care
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-4 text-center">
+                        <div class="w-36 h-36 mx-auto rounded-full bg-gradient-brand p-1 shadow-lg flex items-center justify-center">
+                            <div class="w-full h-full rounded-full bg-white flex flex-col items-center justify-center text-brandPrimary">
+                                <i class="fa-solid fa-cat text-5xl mb-1"></i>
+                                <span class="text-xs font-extrabold">Ale's Paws</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brandSecondary uppercase tracking-widest mb-2">My Journey</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-textDark">Education & Project Leadership</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto relative timeline-line space-y-8 pl-8">
+                
+                <div class="relative group">
+                    <div class="absolute -left-[39px] top-1.5 w-6 h-6 rounded-full bg-brandPrimary border-4 border-white shadow-md"></div>
+                    <div class="glass-card p-6 rounded-2xl hover-card border border-pink-100">
+                        <span class="text-xs font-extrabold text-brandPrimary">2024 - Present</span>
+                        <h4 class="text-xl font-bold text-textDark mt-1">Sistem Informasi Undergraduate</h4>
+                        <p class="text-xs text-brandSecondary font-bold mb-3">UPN Veteran Jawa Timur, Surabaya</p>
+                        <p class="text-textMuted text-sm leading-relaxed">
+                            Focusing on Mobile Application Development, and Web Engineering
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <div class="absolute -left-[39px] top-1.5 w-6 h-6 rounded-full bg-brandSecondary border-4 border-white shadow-md"></div>
+                    <div class="glass-card p-6 rounded-2xl hover-card border border-pink-100">
+                        <span class="text-xs font-extrabold text-brandSecondary">2024 - Present</span>
+                        <h4 class="text-xl font-bold text-textDark mt-1">Group UI/UX & Developer Initiatives</h4>
+                        <p class="text-xs text-brandPrimary font-bold mb-3">Academic & Community Projects</p>
+                        <p class="text-textMuted text-sm leading-relaxed">
+                            Staff developer and UI designer for campus platform projects including Skilink, UniLink, and Pet Welfare technology solutions.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-white/80 relative z-10 border-t border-pink-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <h2 class="text-xs font-bold text-brandPrimary uppercase tracking-widest">Get In Touch</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-textDark">Let's Connect & Create Together 🌸</h3>
+                    <p class="text-textMuted text-sm leading-relaxed">
+                        I am open to internship opportunities, freelance web/mobile projects, or UI/UX collaborations!
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-center gap-4 glass-card p-4 rounded-2xl border border-pink-100">
+                            <div class="w-10 h-10 rounded-xl bg-pink-100 text-brandPrimary flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-textMuted font-medium">Email</p>
+                                <p class="text-sm font-bold text-textDark">alyadarwanti1201@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 glass-card p-4 rounded-2xl border border-pink-100">
+                            <div class="w-10 h-10 rounded-xl bg-purple-100 text-brandSecondary flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-textMuted font-medium">Location</p>
+                                <p class="text-sm font-bold text-textDark">Surabaya, Jawa Timur, Indonesia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="glass-card p-8 rounded-3xl border border-pink-100 shadow-xl">
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-textDark mb-1">Your Name</label>
+                                    <input type="text" id="contactName" required class="w-full bg-creamBg border border-pink-200 rounded-xl px-4 py-3 text-textDark text-sm focus:outline-none focus:border-brandPrimary transition-colors" placeholder="e.g. Bella">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-textDark mb-1">Your Email</label>
+                                    <input type="email" id="contactEmail" required class="w-full bg-creamBg border border-pink-200 rounded-xl px-4 py-3 text-textDark text-sm focus:outline-none focus:border-brandPrimary transition-colors" placeholder="bella@example.com">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-textDark mb-1">Subject</label>
+                                <input type="text" id="contactSubject" required class="w-full bg-creamBg border border-pink-200 rounded-xl px-4 py-3 text-textDark text-sm focus:outline-none focus:border-brandPrimary transition-colors" placeholder="Project Opportunity">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-textDark mb-1">Message</label>
+                                <textarea id="contactMessage" rows="4" required class="w-full bg-creamBg border border-pink-200 rounded-xl px-4 py-3 text-textDark text-sm focus:outline-none focus:border-brandPrimary transition-colors" placeholder="Write your message here..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full btn-pastel font-bold py-3.5 rounded-xl text-sm">
+                                Send Message <i class="fa-regular fa-paper-plane ms-1"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-creamBg relative z-10 text-center border-t border-pink-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-textMuted font-medium">
+                &copy; 2026 Alya Darwanti Armunanto (Ale).
+            </p>
+            <div class="flex items-center gap-4 text-textMuted text-sm">
+                <a href="https://github.com" target="_blank" class="hover:text-brandPrimary"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-brandSecondary"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://instagram.com" target="_blank" class="hover:text-pink-500"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToTop()" class="hidden fixed bottom-6 right-6 w-12 h-12 rounded-full btn-pastel text-white text-lg flex items-center justify-center shadow-lg z-50 hover:scale-110 transition-all">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Project Details Modal -->
+    <div id="projectModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-lg w-full p-6 rounded-3xl shadow-2xl relative border border-pink-200">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 text-textMuted hover:text-textDark text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 id="modalTitle" class="text-2xl font-bold text-textDark mb-1"></h3>
+            <p id="modalSubtitle" class="text-xs text-brandPrimary font-bold mb-4"></p>
+            <p id="modalDescription" class="text-textMuted text-sm mb-4 leading-relaxed"></p>
+            <div class="mb-6">
+                <h5 class="text-xs font-bold text-textDark uppercase mb-1">Tech Stack</h5>
+                <p id="modalTech" class="text-xs font-semibold text-brandSecondary bg-purple-50 p-2.5 rounded-xl"></p>
+            </div>
+            <div class="flex justify-end">
+                <button onclick="closeProjectModal()" class="px-5 py-2 rounded-xl bg-pink-100 text-brandPrimary font-bold text-xs hover:bg-pink-200 transition-colors">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Typing Effect
+        const phrases = ["UI/UX Designer.", "Kotlin Mobile Developer.", "Full-Stack Web Developer.", "Cat Care Enthusiast."];
+        let i = 0, j = 0, isDeleting = false;
+        const typedElement = document.getElementById('typedText');
+
+        function typeLoop() {
+            const currentPhrase = phrases[i];
+            if (isDeleting) {
+                typedElement.textContent = currentPhrase.substring(0, j - 1);
+                j--;
+            } else {
+                typedElement.textContent = currentPhrase.substring(0, j + 1);
+                j++;
+            }
+
+            if (!isDeleting && j === currentPhrase.length) {
+                isDeleting = true;
+                setTimeout(typeLoop, 1800);
+            } else if (isDeleting && j === 0) {
+                isDeleting = false;
+                i = (i + 1) % phrases.length;
+                setTimeout(typeLoop, 400);
+            } else {
+                setTimeout(typeLoop, isDeleting ? 40 : 80);
+            }
+        }
+        typeLoop();
+
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Portfolio Category Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-brandPrimary', 'text-white');
+                    b.classList.add('bg-white', 'text-textMuted');
+                });
+                btn.classList.add('active', 'bg-brandPrimary', 'text-white');
+                btn.classList.remove('bg-white', 'text-textMuted');
+
+                const filter = btn.getAttribute('data-filter');
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        let counterAnimated = false;
+        window.addEventListener('scroll', () => {
+            if (!counterAnimated && window.scrollY > 200) {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    let count = 0;
+                    const updateCount = () => {
+                        const increment = Math.ceil(target / 40);
+                        if (count < target) {
+                            count += increment;
+                            counter.innerText = count > target ? target : count;
+                            setTimeout(updateCount, 30);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                });
+                counterAnimated = true;
+            }
+
+            const backToTopBtn = document.getElementById('backToTop');
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.remove('hidden');
+            } else {
+                backToTopBtn.classList.add('hidden');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Project Modal
+        function openProjectModal(title, subtitle, desc, tech) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalSubtitle').innerText = subtitle;
+            document.getElementById('modalDescription').innerText = desc;
+            document.getElementById('modalTech').innerText = tech;
+            document.getElementById('projectModal').classList.remove('hidden');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.add('hidden');
+        }
+
+        function downloadCV() {
+            alert('Alya_Darwanti_CV.pdf downloaded successfully!');
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('contactName').value;
+            alert(`Thank you, ${name}! Your message has been sent successfully.`);
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</body>
+</html>
